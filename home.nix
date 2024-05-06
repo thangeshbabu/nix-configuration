@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs,unstable-pkgs , ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -16,8 +16,13 @@
 
   # The home.packages option allows you to install Nix packages into your environment.
   #
+  # home.packages = with pkgs; [
   home.packages = with pkgs; [
     alacritty
+    qbittorrent
+    openssl
+    direnv
+    gitleaks
     ansible
     azure-cli
     brave
@@ -40,8 +45,10 @@
     libvirt
     mpv
     neofetch
-    neovim
     nodejs
+    # neovim
+    unstable-pkgs.neovim
+    zip
     obsidian
     pass
     podman
@@ -54,7 +61,6 @@
     rnix-lsp
     starship
     stow
-    terraform
     tig
     tmux
     vagrant
@@ -62,14 +68,35 @@
     zoxide
     unzip
     zsh
-
-
+    vscodium
+    ranger
+    htop-vim
+    ollama
+    
     ### neovim dependencies
     alejandra
     luarocks
     python3.pkgs.pynvim
 
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    #### gaming
+    bottles
+    lutris
+    steam
+
+    #### work related stuff
+    unstable-pkgs.bitwarden-cli
+    unstable-pkgs.terraform
+    popeye
+    kube-score
+    thunderbird
+    jq
+    bfg-repo-cleaner
+
+    #### hobbies
+    burpsuite
+    
+
+    # (nerdfonts.override { fonts = [ "FiraCode" ]; })
     #   # # Adds the 'hello' command to your environment. It prints a friendly
     #   # # "Hello, world!" when run.
     #
@@ -84,6 +111,8 @@
     #   # # environment:
   ];
 
+
+
   dconf.settings = {
   "org/virt-manager/virt-manager/connections" = {
     autoconnect = ["qemu:///system"];
@@ -91,7 +120,11 @@
   };
 };
 
-
+programs.zsh = {
+    enableCompletion=true;
+    enableAutosuggestions = true;
+    syntaxHighlighting.enable = true;
+};
 
   programs.git = {
     enable = true;

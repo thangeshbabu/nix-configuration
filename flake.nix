@@ -3,16 +3,27 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, home-manager, nixpkgs, ... }:
+  outputs = { self, home-manager, nixpkgs, nixpkgs-unstable, ... }@inputs:
     let
       system = "x86_64-linux";
       allowUnfree = { nixpkgs.config.allowUnfree = true; };
+
       lib = nixpkgs.lib;
+
       pkgs = nixpkgs.legacyPackages.${system};
+      unstable-pkgs = nixpkgs-unstable.legacyPackages.${system};
+
+      nixpkgsConfig = {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+
     in
     {
       nixosConfigurations = {
@@ -22,9 +33,16 @@
         };
       };
       homeConfigurations = {
+
         thbabua = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+
+         extraSpecialArgs = { inherit unstable-pkgs; };
+
+          inherit pkgs ;
+
           modules = [ ./home.nix ];
+          
+
         };
       };
     };

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs,  ... }:
 
 {
   imports =
@@ -16,8 +16,19 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
 
-  virtualisation.libvirtd.enable = true;
+  # virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd = {
+
+  qemu = {
+    package = pkgs.qemu_kvm; # only emulates host arch, smaller download
+    swtpm.enable = true; # allows for creating emulated TPM
+    ovmf.packages = [(pkgs.OVMF.override {
+      secureBoot = true;
+      tpmSupport = true;
+    }).fd]; # or use pkgs.OVMFFull.fd, which enables more stuff
+  };
+};
 
 
 
@@ -132,12 +143,15 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    jq
+    yq
+    electron
     curl
     firefox
     teams-for-linux
-    neovim
     vim
     tmux
+    dnsutils
     # gnome.gnome-disk-utility
     # go
     # zsh
