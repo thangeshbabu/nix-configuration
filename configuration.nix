@@ -177,6 +177,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+    programs.dconf.enable = true;
   # enables zsh
   programs.zsh = {
     enable = true;
