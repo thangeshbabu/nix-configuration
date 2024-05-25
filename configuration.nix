@@ -16,18 +16,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
 
-  # virtualisation.libvirtd.enable = true;
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd = {
-
-  qemu = {
-    package = pkgs.qemu_kvm; # only emulates host arch, smaller download
-    swtpm.enable = true; # allows for creating emulated TPM
-    ovmf.packages = [(pkgs.OVMF.override {
-      secureBoot = true;
-      tpmSupport = true;
-    }).fd]; # or use pkgs.OVMFFull.fd, which enables more stuff
-  };
+# virtualisation.libvirtd.enable = true;
+programs.virt-manager.enable = true;
+virtualisation.docker.enable = true;
+virtualisation.libvirtd = {
+      qemu = {
+        package = pkgs.qemu_kvm; # only emulates host arch, smaller download
+        swtpm.enable = true; # allows for creating emulated TPM
+        ovmf.packages = [(pkgs.OVMF.override {
+          secureBoot = false;
+          tpmSupport = true;
+        }).fd]; # or use pkgs.OVMFFull.fd, which enables more stuff
+      };
 };
 
 
@@ -178,8 +178,6 @@
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 # nix.binaryCaches = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
 
-virtualisation.libvirtd.enable = true;
-programs.virt-manager.enable = true;
 
     programs.dconf.enable = true;
   # enables zsh
