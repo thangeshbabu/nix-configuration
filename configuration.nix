@@ -175,7 +175,11 @@
     home-manager
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+# nix.binaryCaches = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
+
+virtualisation.libvirtd.enable = true;
+programs.virt-manager.enable = true;
 
     programs.dconf.enable = true;
   # enables zsh

@@ -72,6 +72,7 @@
     ranger
     htop-vim
     ollama
+    gcc
     
     ### neovim dependencies
     alejandra
@@ -90,10 +91,12 @@
     kube-score
     thunderbird
     jq
+    gh
     bfg-repo-cleaner
 
     #### hobbies
     burpsuite
+    wireshark
     
 
     # (nerdfonts.override { fonts = [ "FiraCode" ]; })
