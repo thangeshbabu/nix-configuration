@@ -73,11 +73,13 @@
     htop-vim
     ollama
     gcc
+    nushell
     
     ### neovim dependencies
     alejandra
     luarocks
     python3.pkgs.pynvim
+
 
     #### gaming
     bottles
@@ -97,6 +99,10 @@
     #### hobbies
     burpsuite
     wireshark
+    parallel
+    velero
+    openjdk
+
     
 
     # (nerdfonts.override { fonts = [ "FiraCode" ]; })
