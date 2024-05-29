@@ -87,6 +87,7 @@
     steam
 
     #### work related stuff
+    onedrive
     unstable-pkgs.bitwarden-cli
     unstable-pkgs.terraform
     popeye
