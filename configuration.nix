@@ -12,9 +12,20 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
+boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
+boot.loader={
+      # systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      
+      grub={
+          configurationLimit = 10;
+          enable = true;
+          device = "nodev";
+          useOSProber = true;
+          efiSupport = true;
+      };
+  };
+  
 
 # virtualisation.libvirtd.enable = true;
 programs.virt-manager.enable = true;
@@ -176,6 +187,12 @@ virtualisation.libvirtd = {
   ];
 
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 30d";
+	};
 # nix.binaryCaches = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
 
 
