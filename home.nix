@@ -71,10 +71,14 @@
     vscodium
     ranger
     htop-vim
+    btop
     ollama
     gcc
     nushell
     sshpass
+    discord
+    skopeo
+    yt-dlp
     
     ### neovim dependencies
     alejandra
@@ -97,10 +101,9 @@
     jq
     gh
     bfg-repo-cleaner
+    azuredatastudio
 
     #### hobbies
-    burpsuite
-    wireshark
     parallel
     velero
     openjdk
@@ -124,13 +127,14 @@
 
 
 
-  dconf.settings = {
+dconf.settings = {
   "org/virt-manager/virt-manager/connections" = {
     autoconnect = ["qemu:///system"];
     uris = ["qemu:///system"];
   };
 };
 
+# services.gnome3.gnome-keyring.enable = true;
 programs.zsh = {
     enableCompletion=true;
     enableAutosuggestions = true;
@@ -140,7 +144,7 @@ programs.zsh = {
   programs.git = {
     enable = true;
     userName = "thbabua";
-    userEmail = "thangeshsaint@gmail.com";
+    userEmail = "";
   };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

@@ -31,6 +31,7 @@ boot.loader={
 programs.virt-manager.enable = true;
 virtualisation.docker.enable = true;
 virtualisation.libvirtd = {
+      enable = true;
       qemu = {
         package = pkgs.qemu_kvm; # only emulates host arch, smaller download
         swtpm.enable = true; # allows for creating emulated TPM
@@ -153,6 +154,7 @@ virtualisation.libvirtd = {
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    file
     git
     jq
     yq
@@ -163,6 +165,10 @@ virtualisation.libvirtd = {
     vim
     tmux
     dnsutils
+    libsecret
+    gnome.gnome-keyring
+    cacert
+    gnome.seahorse
     # gnome.gnome-disk-utility
     # go
     # zsh
@@ -196,7 +202,10 @@ nix.gc = {
 # nix.binaryCaches = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
 
 
-    programs.dconf.enable = true;
+programs.seahorse.enable=true;
+programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.ksshaskpass.out}/bin/ksshaskpass";
+programs.dconf.enable = true;
+
   # enables zsh
   programs.zsh = {
     enable = true;
@@ -220,6 +229,7 @@ nix.gc = {
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  # services.gnome3.gnome-keyring.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
