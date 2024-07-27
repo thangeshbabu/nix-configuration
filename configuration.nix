@@ -26,10 +26,13 @@ boot.loader={
       };
   };
   
+# virtualbox
+virtualisation.virtualbox.host.enable = true;
 
 # virtualisation.libvirtd.enable = true;
 programs.virt-manager.enable = true;
 virtualisation.docker.enable = true;
+
 virtualisation.libvirtd = {
       enable = true;
       qemu = {
@@ -94,15 +97,15 @@ virtualisation.libvirtd = {
 
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
-    enable = false;
+    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
   };
 
@@ -153,6 +156,7 @@ virtualisation.libvirtd = {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    kdePackages.kamera
     wget
     file
     git
@@ -163,12 +167,15 @@ virtualisation.libvirtd = {
     firefox
     teams-for-linux
     vim
+    tcpdump
     tmux
     dnsutils
     libsecret
     gnome.gnome-keyring
     cacert
     gnome.seahorse
+    tree
+    ansible
     # gnome.gnome-disk-utility
     # go
     # zsh
@@ -193,14 +200,13 @@ virtualisation.libvirtd = {
   ];
 
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+nix.settings.auto-optimise-store = true;
 nix.gc = {
 		automatic = true;
 		dates = "weekly";
-		options = "--delete-older-than 30d";
+		options = "--delete-older-than 15d";
 	};
 # nix.binaryCaches = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
-
 
 programs.seahorse.enable=true;
 programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.ksshaskpass.out}/bin/ksshaskpass";

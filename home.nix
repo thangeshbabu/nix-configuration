@@ -31,6 +31,7 @@
     flameshot
     fzf
     git
+    copyq
     gnome.gnome-disk-utility
     gnupg
     go
@@ -79,6 +80,11 @@
     discord
     skopeo
     yt-dlp
+    cider
+    syncthing
+    filelight
+    baobab
+
     
     ### neovim dependencies
     alejandra
@@ -92,7 +98,9 @@
     steam
 
     #### work related stuff
+    python3
     onedrive
+    libsForQt5.kamoso
     unstable-pkgs.bitwarden-cli
     unstable-pkgs.terraform
     popeye
@@ -101,10 +109,13 @@
     jq
     gh
     bfg-repo-cleaner
-    azuredatastudio
+    # azuredatastudio
+    sonar-scanner-cli
+    open-policy-agent
 
     #### hobbies
     parallel
+    obs-studio
     velero
     openjdk
 
