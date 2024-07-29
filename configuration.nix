@@ -165,7 +165,6 @@ virtualisation.libvirtd = {
     electron
     curl
     firefox
-    teams-for-linux
     vim
     tcpdump
     tmux

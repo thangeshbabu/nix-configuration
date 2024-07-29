@@ -22,7 +22,6 @@
     qbittorrent
     openssl
     direnv
-    gitleaks
     ansible
     azure-cli
     brave
@@ -35,7 +34,6 @@
     gnome.gnome-disk-utility
     gnupg
     go
-    peek
     k9s
     kubectl
     kubelogin
@@ -61,6 +59,7 @@
     ripgrep
     # rnix-lsp
     starship
+    python3
     stow
     tig
     tmux
@@ -92,30 +91,27 @@
     python3.pkgs.pynvim
 
 
-    #### gaming
-    bottles
-    lutris
-    steam
+    # #### gaming
+    # bottles
+    # lutris
+    # steam
 
     #### work related stuff
-    python3
+    chromium
+    teams-for-linux
     onedrive
     libsForQt5.kamoso
     unstable-pkgs.bitwarden-cli
     unstable-pkgs.terraform
     popeye
     kube-score
-    thunderbird
     jq
     gh
     bfg-repo-cleaner
     # azuredatastudio
-    sonar-scanner-cli
-    open-policy-agent
 
     #### hobbies
     parallel
-    obs-studio
     velero
     openjdk
 
