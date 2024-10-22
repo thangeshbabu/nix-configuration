@@ -58,11 +58,11 @@ virtualisation.libvirtd = {
   networking.networkmanager.enable = true;
 
 
-  networking.nameservers = [ "208.67.222.222" "208.67.220.220" ];
+  networking.nameservers = [ "208.67.222.222" "208.67.220.220" "1.1.1.1" "8.8.8.8" ];
 
 
   # Set your time zone.
-  time.timeZone = "Asia/Kolkata";
+  time.timeZone = "Asia/Singapore";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_IN";
@@ -95,9 +95,26 @@ virtualisation.libvirtd = {
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.pipewire.wireplumber.extraConfig."10-bluez" = {
+    "monitor.bluez.properties" = {
+      "bluez5.enable-sbc-xq" = true;
+      "bluez5.enable-msbc" = true;
+      "bluez5.enable-hw-volume" = true;
+      "bluez5.roles" = [
+        "hsp_hs"
+        "hsp_ag"
+        "hfp_hf"
+        "hfp_ag"
+      ];
+    };
+  };
+
+hardware.bluetooth.enable = true; # enables support for Bluetooth
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+  
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

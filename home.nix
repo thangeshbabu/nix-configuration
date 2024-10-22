@@ -24,12 +24,14 @@
     direnv
     ansible
     azure-cli
-    brave
-    fd
+    azure-cli-extensions.azure-devops
+    azure-cli-extensions.aks-preview
     firefox
     flameshot
     fzf
     git
+    gitleaks
+    vscode
     copyq
     gnome.gnome-disk-utility
     gnupg
@@ -39,18 +41,15 @@
     kubelogin
     kubernetes-helm
     lazygit
-    lazygit
     libreoffice
     libvirt
     mpv
     neofetch
-    nodejs
-    # neovim
-    unstable-pkgs.neovim
+    neovim
+    # unstable-pkgs.neovim
     zip
     obsidian
     pass
-    podman
     powershell
     python3
     python3.pkgs.pip
@@ -60,7 +59,6 @@
     # rnix-lsp
     starship
     python3
-    stow
     tig
     tmux
     vagrant
@@ -68,26 +66,11 @@
     zoxide
     unzip
     zsh
-    vscodium
-    ranger
-    htop-vim
-    btop
-    ollama
+    # vscodium
     gcc
-    nushell
-    sshpass
-    discord
-    skopeo
-    yt-dlp
-    cider
     syncthing
-    filelight
-    baobab
-
     
     ### neovim dependencies
-    alejandra
-    luarocks
     python3.pkgs.pynvim
 
 
@@ -97,14 +80,13 @@
     # steam
 
     #### work related stuff
+    go-task
     chromium
-    teams-for-linux
-    onedrive
     libsForQt5.kamoso
-    unstable-pkgs.bitwarden-cli
-    unstable-pkgs.terraform
-    popeye
-    kube-score
+    bruno
+    htop
+    # popeye
+    # kube-score
     jq
     gh
     bfg-repo-cleaner
@@ -113,7 +95,9 @@
     #### hobbies
     parallel
     velero
-    openjdk
+    ollama
+    baobab
+    k8sgpt
 
     
 
